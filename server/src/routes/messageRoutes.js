@@ -3,6 +3,7 @@ const router = express.Router()
 const messageService = require("../services/messageService");
 
 router.post("/", async (req, res) => {
+  console.log(req.body);
   const { chatId, senderId, content } = req.body;
 
   try {
