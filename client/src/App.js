@@ -10,7 +10,6 @@ function App() {
   const [username, setUsername] = useState("");
 
   const chatId = "f72cb5a7-06da-4802-85ff-abe6526e6dd7"
-  const senderId = "5f4493cc-92e2-489f-9d47-224dbce3877f"
 
   useEffect(() => {
     if (isConnected) {
@@ -41,8 +40,8 @@ function App() {
     socket.emit("message", value)
     setValue('');
 
-    const response = await messageAPI.sendMessage({ chatId: chatId, senderId: senderId, content: value })
-    
+    const response = await messageAPI.sendMessage({ chatId: chatId, sender: username, content: value })
+
     if (response) {
       console.log("Mensage guardado");
     }
@@ -79,6 +78,7 @@ function App() {
             value={value}
           />
           <button onClick={handleClick}>Send</button>
+          <h2>{username}</h2>
         </div>
       )}
       <ul>

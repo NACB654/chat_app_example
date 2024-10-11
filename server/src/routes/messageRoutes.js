@@ -4,10 +4,10 @@ const messageService = require("../services/messageService");
 
 router.post("/", async (req, res) => {
   console.log(req.body);
-  const { chatId, senderId, content } = req.body;
+  const { chatId, sender, content } = req.body;
 
   try {
-    const message = await messageService.sendMessage(chatId, senderId, content);
+    const message = await messageService.sendMessage(chatId, sender, content);
     res.status(201).json(message);
   }
   catch (err) {
